@@ -20,7 +20,8 @@ async function getQuote(tokenIn, tokenOut,amount){
     'Content-Type': 'application/json',
     'Accept': 'application/json'
   }});
-    console.log(response);
+    console.log(response.data.quote);
+    return response.data.quote;
 }
 catch (error) {
     console.error(error.message);

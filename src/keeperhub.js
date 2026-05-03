@@ -1,14 +1,14 @@
 require("dotenv").config();
 const axios = require("axios");
 
-const url = 'https://api.keeperhub.com/api/execute/transfer';
+const url = 'https://app.keeperhub.com/api/execute/transfer';
 
 async function executeSwap(recipientAddress ,amount ){
 try{
     const response = await axios.post(url, {
-    "network": "unichain-sepolia",
+    "network": "sepolia",
     "recipientAddress": recipientAddress,
-    "amount": amount,
+    "amount": '0.001',
     "tokenAddress": process.env.USDC_ADDRESS,
     "gasLimitMultiplier": "1.2"
   }, {
@@ -20,6 +20,7 @@ try{
 }
 catch (error) {
     console.error(error.message);
+    console.error(error.response?.data);
 }
 }
 
